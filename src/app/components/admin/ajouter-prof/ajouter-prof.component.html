@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Professeur</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" id="professeurs" aria-current="page" href="http://localhost:4200//adminDashboard/10000000/afficherProfs">Professeurs</a>
+          </li>
+              
+            <script>
+                document.querySelector('.professeurs').addEventListener('click', function() {
+                   window.location.href = 'http://localhost:4200//adminDashboard/10000000/afficherProfs'; // Redirection vers l'URL souhaitée
+                  });
+              </script>
+          
+          <i class='bx bx-plus' ></i>
+
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:4200/adminDashboard/10000000/ajouterProf">Ajouter Professeur</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> <!--
+  
+    -->
+    <!--Main Content-->
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Ajouter Professeur</h2>
+        
+        
+        <form [formGroup]="form" (ngSubmit)="ajouterProf()">
+          <!-- Form fields go here -->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="cin_prof" class="form-label">CIN </label>
+            <input type="text" id="cin_prof" formControlName="cin_prof" class="form-control" placeholder="CIN">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="nom_prof" class="form-label">Nom </label>
+            <input type="text" id="nom_prof" formControlName="nom_prof" class="form-control"placeholder="Nom">
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+             <label for="prenom_prof" class="form-label">Prenom </label>
+            <input type="text" id="prenom_prof" formControlName="prenom_prof" class="form-control" placeholder="Prenom">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="email_prof" class="form-label">Email </label>
+            <input type="email" id="email_prof" formControlName="email_prof" class="form-control" placeholder="Email">
+            </div>
+          
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">    
+              <label for="tel_prof" class="form-label">Telephone </label>
+            <input type="number" id="tel_prof" formControlName="tel_prof" class="form-control" placeholder="Telephone">
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <div class="col-md-12 form-group mb-3">
+              <label for="specialite_prof" class="form-label">Specialité </label>
+              <input type="text" id="specialite_prof" formControlName="specialite_prof" class="form-control"placeholder="Spécialité">
+            </div>
+            </div>
+            <div class="col-md-12 form-group mb-3">   
+             <label for="capacite_prof" class="form-label">Capacite </label>
+            <input type="number" id="capacite_prof" formControlName="capacite_prof" class="form-control" placeholder="Capacite">
+            </div>    
+           </div>
+           <div class="row">
+                <div class="col-md-12 form-group mb-3">
+                <label for="information_prof" class="form-label">Information</label>
+            <input type="text" id="information_prof" formControlName="information_prof" class="form-control" placeholder="Information">
+           </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group">
+                <button type="submit"  class="btn btn-primary w-100">Ajouter</button>
+            </div>
+          </div>
+        </form>
+       
+  
+      </div>
+    </div>
+    
+</body>
+</html>

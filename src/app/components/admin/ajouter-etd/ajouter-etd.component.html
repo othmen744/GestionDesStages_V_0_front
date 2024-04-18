@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Etudiant</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" id="etds" aria-current="page" href="http://localhost:4200//adminDashboard/10000000/afficherEtds">Etudiants</a>
+          </li>
+              
+            <script>
+                document.querySelector('.etds').addEventListener('click', function() {
+                   window.location.href = 'http://localhost:4200//adminDashboard/10000000/afficherEtds'; // Redirection vers l'URL souhaitée
+                  });
+              </script>
+          
+          <i class='bx bx-plus' ></i>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/adminDashboard/10000000/ajouterEtd">Ajouter Etudiant</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> <!--
+  
+    -->
+    <!--Main Content-->
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Ajouter Etudiant</h2>
+        
+        
+        <form [formGroup]="form" (ngSubmit)="ajouterEtd()">
+          <!-- Form fields go here -->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="cin_etd" class="form-label">CIN </label>
+            <input type="text" id="cin_etd" formControlName="cin_etd" class="form-control" placeholder="CIN">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="nom_etd" class="form-label">Nom </label>
+            <input type="text" id="nom_etd" formControlName="nom_etd" class="form-control"placeholder="Nom">
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+             <label for="prenom_etd" class="form-label">Prenom </label>
+            <input type="text" id="prenom_etd" formControlName="prenom_etd" class="form-control" placeholder="Prenom">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="email_etd" class="form-label">Email </label>
+            <input type="email" id="email_etd" formControlName="email_etd" class="form-control" placeholder="Email">
+            </div>
+          
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">    
+              <label for="tel_etd" class="form-label">Telephone </label>
+            <input type="number" id="tel_etd" formControlName="tel_etd" class="form-control" placeholder="Telephone">
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <div class="col-md-12 form-group mb-3">
+              <label for="niveau_etd" class="form-label">Niveau </label>
+              <input type="text" id="niveau_etd" formControlName="niveau_etd" class="form-control"placeholder="Niveau">
+            </div>
+            </div>
+            <div class="col-md-12 form-group mb-3">   
+             <label for="specialite_etd" class="form-label">Specialité </label>
+            <input type="number" id="specialite_etd" formControlName="specialite_etd" class="form-control" placeholder="Specialité">
+            </div>    
+           </div>
+           
+          <div class="row">
+            <div class="col-md-12 form-group">
+                <button type="submit"  class="btn btn-primary w-100">Ajouter</button>
+            </div>
+          </div>
+        </form>
+       
+  
+      </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <title>Enicar | ADMIN</title>
+</head>
+<body>
+
+  <!-- SIDEBAR id="sidebar"   -->
+
+  
+  <section id="sidebar"  [ngClass]="status ? 'hide' : ''">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Espace Etudiant</span>
+    </a>
+    <ul class="side-menu top">
+      <li >
+        <a href="http://localhost:4200/etdDashboard">
+          <script>
+              document.querySelector('.bx-plus').addEventListener('click', function() {
+                 window.location.href = 'http://localhost:4200/etdDashboard'; // Redirection vers l'URL souhaitée
+                 console.log("hanilena");
+                });
+              
+          </script>
+           <i class='bx bxs-dashboard' ></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="http://localhost:4200/etdDashboard/afficherProfs">
+              <script>
+                  document.querySelector('.bx-plus').addEventListener('click', function() {
+                     window.location.href = 'http://localhost:4200/etdDashboard/afficherProfs'; // Redirection vers l'URL souhaitée
+                    });
+                  
+              </script>
+              <i class='bx bxs-group' ></i>
+              <span class="text">Professeurs</span>
+            </a>
+      </li>
+      <li  >
+          <a href="http://localhost:4200/etdDashboard/afficherDocs">
+              <script>
+                  document.querySelector('.bxs-graduation').addEventListener('click', function() {
+                     window.location.href = 'http://localhost:4200/etdDashboard/afficherDocs'; // Redirection vers l'URL souhaitée
+                    });
+                  
+              </script>
+        
+              <i class='bx bxs-graduation' ></i>
+               <span class="text">Documents</span>
+        </a>
+      </li>
+  
+      <li>
+        <a href="http://localhost:4200/etdDashboard/afficherStages">
+          <script>
+              document.querySelector('.bxs-graduation').addEventListener('click', function() {
+                 window.location.href = "http://localhost:4200/etdDashboard/afficherStages"; // Redirection vers l'URL souhaitée
+                });
+              
+          </script>
+    
+          <i class='bx bxs-cube-alt' ></i>
+          <span class="text">Stages</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="side-menu">
+      <li>
+        <a href="http://localhost:4200/etdDashboard/modifierEtd" >
+          <script>
+              document.querySelector('.bx-plus').addEventListener('click', function() {
+                 window.location.href = 'http://localhost:4200/etdDashboard/modifierEtd'; // Redirection vers l'URL souhaitée
+                 console.log("hanilena");
+                });
+              
+          </script> 
+              <i class='bx bxs-cog' ></i>
+          <span class="text">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://localhost:4200/login" class="logout">
+          <script>
+              document.querySelector('.bx-plus').addEventListener('click', function() {
+                 window.location.href = 'http://localhost:4200/login'; // Redirection vers l'URL souhaitée
+                 console.log("hanilena");
+                });
+              
+          </script>       
+             <i class='bx bxs-log-out-circle' ></i>
+          <span class="text">Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content">
+  <!-- NAVBAR -->
+  <nav>
+    <i (click)="addToggle()" class='bx bx-menu' ></i>
+    <a href="#" class="nav-link">Recherche</a>
+    <form action="#">
+      <div class="form-input">
+        <input type="search" placeholder="Search...">
+        <button type="button" class="search-btn"><i class='bx bx-search' ></i></button>
+      </div>
+    </form>
+    <a href="#" class="notification">
+      <i class='bx bxs-bell' ></i>
+      <span class="num">{{this.nbrNouvDem}}</span>
+    </a>
+    <a href="#" class="profile">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2b9qutatTGJWMI3iMASXm1y_Rnsek4OV1DvFG6zyIp0E7TkZtLpJ8HbZzab_srZrCv_k&usqp=CAU">
+    </a>
+  </nav>
+  <!-- NAVBAR -->
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1 >Welcome Back<span style="color:blue;"> {{userInfo.prenom_etd}} !</span></h1>
+
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" href="#">Professeurs</a>
+          </li>
+        </ul>
+      </div>
+      <!--
+      <a href="#" class="btn-download">
+        <i class='bx bxs-cloud-download' ></i>
+        <span class="text">Download PDF</span>
+      </a>
+    -->
+    </div>
+    <ul class="box-info">
+      <li>
+        <i class='bx bxs-calendar-check' ></i>
+        <span class="text">
+          <h3>{{ this.nbrDemEnvProf }}</h3>
+          <p>Nouvelles demandes</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+          <h3>{{ this.nbrProfs }}</h3>
+          <p>Professeurs</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+          <h3>{{ this.nbrDocs }}</h3>
+          <p>Documents</p>
+        </span>
+      </li>
+    </ul>
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Tous les Professeurs</h3>
+         
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>CIN</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Spécialité</th>
+              <th>Information</th>
+              <th >Capacité</th>
+              <th>Acceptés</th>
+              <th>Envoyer Demande</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prof of tousProfs">
+              <td style="font-weight:bold;">{{prof.cin_prof}}
+              </td>
+              <td>{{prof.nom_prof}}</td>
+              <td>{{prof.prenom_prof}}</td>
+              <td>{{prof.email_prof}}</td>
+              <td>{{prof.specialite_prof}}</td>
+              <td>{{prof.information_prof}}</td>
+              <td id="capacite" style="color:red; font-weight: bold;">{{prof.capacite_prof}}</td>
+               
+              <td><span id="nbr" style="color:blue; font-weight: bold;">{{prof.nbrEtdsEncad}} </span></td>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+
+                function changeColorBasedOnCondition() {
+
+               if (document.getElementById('nbr').textContent  == document.getElementById('capacite').textContent  )
+                  document.getElementById('nbr').style.color='red';
+                else
+                document.getElementById('nbr').style.color='green';
+
+                }
+                changeColorBasedOnCondition()
+              });
+            </script>    
+              <td>
+                <div class="status completed" >
+               <span>
+                 <button  (click)="signer()" type="button" style="background-color: rgb(12, 162, 12); border-color: rrgb(12, 162, 12)ed;">Envoyer</button>
+               </span>
+               </div>
+             </td>
+
+
+
+
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </main>
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+  
+</body>
+
+</html>

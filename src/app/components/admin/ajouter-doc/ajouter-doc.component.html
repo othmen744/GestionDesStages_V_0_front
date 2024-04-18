@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Professeur</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://localhost:4200//adminDashboard/10000000/" id="dash">Dashboard</a>
+            <script>
+              document.querySelector('.dash').addEventListener('click', function() {
+                 window.location.href = 'http://localhost:4200//adminDashboard/10000000'; // Redirection vers l'URL souhaitée
+                });
+            </script>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/adminDashboard/10000000/ajouterDoc">Ajouter Document</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> <!--
+  
+    -->
+    <!--Main Content-->
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Ajouter Document</h2>
+        
+        
+        <form [formGroup]="form" (ngSubmit)="ajouterDoc()">
+          <!-- Form fields go here -->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="libelle_doc" class="form-label">Libelle </label>
+            <input type="text" id="libelle_doc" formControlName="libelle_doc" class="form-control" placeholder="Libelle">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+            <label for="description_doc" class="form-label">Description </label>
+            <input type="text" id="description_doc" formControlName="description_doc" class="form-control"placeholder="Description">
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+             <label for="url" class="form-label">Url </label>
+            <input type="text" id="url" formControlName="url" class="form-control" placeholder="Url">
+            </div>
+          </div>
+         
+          <div class="row">
+            <div class="col-md-12 form-group">
+                <button type="submit"  class="btn btn-primary w-100">Ajouter</button>
+            </div>
+          </div>
+        </form>
+       
+  
+      </div>
+    </div>
+    
+</body>
+</html>

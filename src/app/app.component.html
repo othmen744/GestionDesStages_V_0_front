@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image.jpg" href="../assets/images/logo enic.jpg" >
+  <title>Enicar</title>
+</head>
+<body>
+    <router-outlet></router-outlet>
+
+
+</body>
+</html> 
+<!--
+<!DOCTYPE html>
+    <app-login></app-login>
+
+
+<html lang="es" xmlns:th="http://thymeleaf.org" >
+<head>
+        <app-dashboard-admin></app-dashboard-admin>
+        <router-outlet></router-outlet>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enicar| Connexion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
+    <link href="" th:href="@{https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" href="./app.component.css" >
+    <link rel="icon" type="image.jpg" href="../assets/images/logo enic.jpg" >
+
+</head>
+
+<body>
+
+    <div class="contenedor-formulario contenedor">
+        <div class="imagen-formulario">
+            
+        </div>
+
+        <form class="formulario" th:action="@{/login}" method="POST" th:object="${user}">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="logo enicar">
+            </div>
+            <div class="texto-formulario">
+                <h2>Bienvenue</h2>
+            </div>
+            <div class="input">
+                <label for="usuario">Login</label>
+                <input placeholder="Entrez votre login" type="text" id="usuario" th:field="*{email}"   >
+            </div>
+            <div class="input">
+                <label for="contraseña">Mot de passe</label>
+                <input placeholder="Entrez votre Mot de passe" type="password" id="contraseña" th:field="*{mdp}"   >
+            </div>
+        
+            <div class="input">
+                <input type="submit" value="Se connecter">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>-->

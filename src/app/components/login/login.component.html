@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enicar| Connexion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
+    <link href="" th:href="@{https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" href="./login.component.css" >
+    <link rel="icon" type="image.jpg" href="./images/logo enic.jpg" >
+
+</head>
+
+<body>
+
+    <div class="contenedor-formulario contenedor " >
+        <div class="imagen-formulario">
+            
+        </div>
+
+        <form [formGroup]="form" class="formulario"  method="POST" (ngSubmit)="logIn()" >
+           <div class="logo">
+            
+                <img src="https://upload.wikimedia.org/wikipedia/fr/c/c2/Logo_ENICarthage.jpg"  >
+
+            </div> 
+            <div class="texto-formulario">
+                <h2>Bienvenue</h2>
+            </div>
+           
+            <div class="input">
+                <label for="email">Login</label>
+            
+                <input placeholder="Entrez votre login" type="text" id="email"  name="email" class="form-control" formControlName="email" >
+            </div>
+            <div class="input">
+                <label for="mdp">Mot de passe</label>
+                <input placeholder="Entrez votre Mot de passe" type="password" id="mdp" class="form-control" name="mdp" formControlName="mdp">
+            </div>
+         
+            <div class="input">
+                <input type="submit" value="Se connecter" (click)="logIn()">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <title>Enicar | ADMIN</title>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+
+  <section id="sidebar"  [ngClass]="status ? 'hide' : ''">
+  <a href="#" class="brand">
+    <i class='bx bxs-smile'></i>
+    <span class="text">Espace Professeur</span>
+  </a>
+  <ul class="side-menu top">
+    <li class="active">
+      <a href="http://localhost:4200/profDashboard">
+        <script>
+            document.querySelector('.bx-plus').addEventListener('click', function() {
+               window.location.href = 'http://localhost:4200/profDashboard'; // Redirection vers l'URL souhaitée
+               console.log("hanilena");
+              });
+            
+        </script>
+         <i class='bx bxs-dashboard' ></i>
+        <span class="text">Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a href="http://localhost:4200/prof/afficherDem">
+            <script>
+                document.querySelector('.bx-plus').addEventListener('click', function() {
+                   window.location.href = 'http://localhost:4200/prof/afficherDem'; // Redirection vers l'URL souhaitée
+                  });
+                
+            </script>
+            <i class='bx bxs-group' ></i>
+            <span class="text">Demandes</span>
+          </a>
+    </li>
+    <li  >
+        <a href="http://localhost:4200/prof/afficherStages">
+            <script>
+                document.querySelector('.bxs-graduation').addEventListener('click', function() {
+                   window.location.href = 'http://localhost:4200/prof/afficherStages'; // Redirection vers l'URL souhaitée
+                  });
+                
+            </script>
+      
+            <i class='bx bxs-graduation' ></i>
+             <span class="text">Stages</span>
+      </a>
+    </li>
+
+  </ul>
+  <ul class="side-menu">
+    <li>
+        <a href="http://localhost:4200/prof/modifierProf" >
+          <script>
+              document.querySelector('.bx-plus').addEventListener('click', function() {
+                 window.location.href = 'http://localhost:4200/prof/modifierProf'; // Redirection vers l'URL souhaitée
+                 console.log("hanilena");
+                });
+              
+          </script> 
+        <i class='bx bxs-cog' ></i>
+        <span class="text">Settings</span>
+      </a>
+    </li>
+    <li>
+      <a href="http://localhost:4200/login" class="logout">
+        <script>
+            document.querySelector('.bx-plus').addEventListener('click', function() {
+               window.location.href = 'http://localhost:4200/login'; // Redirection vers l'URL souhaitée
+               console.log("hanilena");
+              });
+            
+        </script> 
+         <i class='bx bxs-log-out-circle' ></i>
+        <span class="text">Deconnexion</span>
+      </a>
+    </li>
+  </ul>
+</section>
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content">
+  <!-- NAVBAR -->
+  <nav>
+    <i (click)="addToggle()" class='bx bx-menu' ></i>
+    <a href="#" class="nav-link">Recherche</a>
+    <form action="#">
+      <div class="form-input">
+        <input type="search" placeholder="Search...">
+        <button type="button" class="search-btn"><i class='bx bx-search' ></i></button>
+      </div>
+    </form>
+    <a href="#" class="notification">
+      <i class='bx bxs-bell' ></i>
+      <span class="num">{{this.nbrnouvDemandes}}</span>
+    </a>
+    <a href="#" class="profile">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2b9qutatTGJWMI3iMASXm1y_Rnsek4OV1DvFG6zyIp0E7TkZtLpJ8HbZzab_srZrCv_k&usqp=CAU">
+    </a>
+  </nav>
+  <!-- NAVBAR -->
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1 >Welcome Back<span style="color:blue;"> {{userInfo.prenom_prof}} !</span></h1>
+        <p style="color:red; font-weight: bold; padding-bottom: 20px; font-size: 20px;">Vous avez atteint {{nbrEncad}} sur {{capacite}} étudiants encadrés !</p>
+
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" href="#">Acceuil</a>
+          </li>
+        </ul>
+      </div>
+      <!--
+      <a href="#" class="btn-download">
+        <i class='bx bxs-cloud-download' ></i>
+        <span class="text">Download PDF</span>
+      </a>
+    -->
+    </div>
+    <ul class="box-info">
+      <li>
+        <i class='bx bxs-calendar-check' ></i>
+        <span class="text">
+          <h3>{{ this.nbrnouvDemandes }}</h3>
+          <p>Nouvelles Demandes</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+          <h3>{{ this.nbrtousDocs }}</h3>
+          <p>Total Demandes </p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+          <h3>{{ this.nbrStages }}</h3>
+          <p>Stages encadrés</p>
+        </span>
+      </li>
+    </ul>
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Nouvelles Demandes Par jour</h3>
+          <i class='bx bx-search' ></i>
+          <i class='bx bx-filter' ></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Expéditeur</th>
+              <th>Libellé document</th>
+              <th>Voir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let demande of nouvDemandes">
+              <td style="font-weight:bold;">
+                <p>{{demande.id_source}}</p>
+              </td>
+              <td>{{demande.libelle_doc}}</td>
+              <td>
+              
+               <div class="status completed" >
+                <span> <!--(click)="signer()" -->
+                  <button  (click)="signer()" type="button" style="background-color: green;">Voir</button>
+                </span>
+                </div>
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+      <div class="todo">
+        <div class="head">
+          <h3>Tous Les Documents Reçus</h3>
+          <i class='bx bx-search' ></i>
+          <i class='bx bx-filter' ></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Expéditeur</th>
+              <th>Libellé document</th>
+              <th>Voir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let demande of tousDocs">
+              <td style="font-weight:bold;">
+                <p>{{demande.id_source}}</p>
+              </td>
+              <td>{{demande.libelle_doc}}</td>
+              <td>
+              
+               <div class="status completed" >
+                <span> <!--(click)="signer()" -->
+                  <button  (click)="signer()" type="button" style="background-color: green;">Voir</button>
+                </span>
+                </div>
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+          
+
+        </div>
+       
+      </div>
+  </main>
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+  
+</body>
+</html>

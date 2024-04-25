@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test": "ng test --no-browsers",
-    "sonar": "sonar-scanner",
-    "sonar": "ng lint && sonar-scanner"
+    "sonar": "sonar-scanner"
   },
   "private": true,
   "dependencies": {

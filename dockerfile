@@ -3,9 +3,11 @@ FROM node:16.14.0 AS build
 WORKDIR /app
 COPY package*.json ./
 
-# Set npm configuration to use a different registry and increase timeout
-RUN npm install
 
+
+# Set npm configuration to use a different registry and increase timeout
+RUN npm install -y
+RUN npm install -g @angular/cli@15.2.6
 COPY . .
 RUN npm run build 
 

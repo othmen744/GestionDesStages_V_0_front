@@ -12,7 +12,7 @@ RUN npm config set registry https://registry.npmmirror.com/ && \
     npm install
 
 COPY . .
-RUN npm run build --configuration production
+RUN npm run build 
 
 # Stage 2: Serve the application with NGINX
 FROM nginx:alpine

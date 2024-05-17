@@ -4,12 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Set npm configuration to use a different registry and increase timeout
-RUN npm config set registry https://registry.npmmirror.com/ && \
-    npm set timeout=60000 && \
-    npm set fetch-retries=5 && \
-    npm set fetch-retry-mintimeout=20000 && \
-    npm set fetch-retry-maxtimeout=120000 && \
-    npm install
+RUN npm install
 
 COPY . .
 RUN npm run build 

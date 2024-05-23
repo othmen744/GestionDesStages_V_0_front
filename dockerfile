@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install -y
 RUN npm install -g @angular/cli@15.2.6
 COPY . .
-RUN npm run build --configuration production
+RUN npm run build 
 
 # Stage 2: Serve the application with NGINX
 FROM nginx:alpine

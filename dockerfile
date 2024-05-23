@@ -3,21 +3,17 @@ FROM node:16.14.0 AS build
 WORKDIR /app
 COPY package*.json ./
 
-
-
-# Set npm configuration to use a different registry and increase timeout
-RUN npm install -y
+# Install dependencies and Angular CLI
+RUN npm install
 RUN npm install -g @angular/cli@15.2.6
 COPY . .
 RUN npm run build 
 
-RUN npm install -g http-server
-
-# Set the working directory
+# Stage 2: Serve the app with http-server
+FROM node:16.14.0-alpine
 WORKDIR /app
-
-# Copy the built Angular application from the previous stage
 COPY --from=build /app/dist/your-angular-app-name /app
+RUN npm install -g http-server
 
 # Expose port 80
 EXPOSE 80

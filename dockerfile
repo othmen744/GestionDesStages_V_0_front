@@ -14,7 +14,7 @@ RUN npm run build --prod
 # Stage 2: Serve the application with NGINX
 FROM nginx:alpine
 COPY --from=build /app/dist/proj-front /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx.conf
 
 # Expose the port
 EXPOSE 80

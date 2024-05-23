@@ -12,7 +12,7 @@ RUN npm run build
 # Stage 2: Serve the app with http-server
 FROM node:16.14.0-alpine
 WORKDIR /app
-COPY --from=build /app/dist/your-angular-app-name /app
+COPY --from=build /app/dist/proj-front /app
 RUN npm install -g http-server
 
 # Expose port 80

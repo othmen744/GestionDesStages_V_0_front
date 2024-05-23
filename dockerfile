@@ -11,11 +11,16 @@ RUN npm install -g @angular/cli@15.2.6
 COPY . .
 RUN npm run build 
 
-# Stage 2: Serve the application with NGINX
-FROM nginx:alpine
-COPY --from=build /app/dist/proj-front /usr/share/nginx/html
-COPY nginx.conf /etc/nginx.conf
+RUN npm install -g http-server
 
-# Expose the port
+# Set the working directory
+WORKDIR /app
+
+# Copy the built Angular application from the previous stage
+COPY --from=build /app/dist/your-angular-app-name /app
+
+# Expose port 80
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+# Start the HTTP server
+CMD ["http-server", "-p", "80"]

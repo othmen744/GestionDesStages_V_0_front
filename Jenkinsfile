@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/othmen744/GestionDesStages_V_0_front.git'
+                git branch: 'main', url: 'https://github.com/othmen744/GestionDesStages_V_0_front.git'
             }
         }
         stage('Install Dependencies') {

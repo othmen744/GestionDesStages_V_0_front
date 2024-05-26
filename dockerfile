@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install
 RUN npm install -g @angular/cli@15.2.6
 COPY . .
-RUN npm run build 
+RUN npm run build --configuration production
 
 # Stage 2: Serve the app with http-server
 FROM node:16.14.0-alpine

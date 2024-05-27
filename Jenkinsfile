@@ -3,6 +3,9 @@ pipeline {
     environment {
         SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
     }
+     tools {
+        nodejs "NodeJS" // The name you gave to the NodeJS installation
+    }
     stages {
         stage('Checkout') {
             steps {

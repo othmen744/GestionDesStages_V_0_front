@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
+        SONARQUBE_CREDENTIALS = credentials('jenkins')
     }
      tools {
         nodejs "NodeJS" // The name you gave to the NodeJS installation

@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies and Angular CLI
-RUN npm install
+RUN npm install --max-http-sockets=50 --max-http-header-size=512000
 RUN npm install -g @angular/cli@15.2.6
 COPY . .
 RUN npm run build --configuration production

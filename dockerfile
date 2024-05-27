@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install --max-http-sockets=50 --max-http-header-size=512000
 RUN npm install -g @angular/cli@15.2.6
 COPY . .
-RUN npm run build --configuration production
+RUN npm run build 
 
 # Stage 2: Serve the app with http-server
 FROM node:16.14.0-alpine

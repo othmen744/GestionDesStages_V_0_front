@@ -25,7 +25,7 @@ pipeline {
        stage('Run SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "sonar-scanner -Dsonar.login=${env.admin} -Dsonar.password=${env.othmen199800}"
+                    sh "run sonar-scanner -Dsonar.login=${env.admin} -Dsonar.password=${env.othmen199800}"
                 }
             }
         }

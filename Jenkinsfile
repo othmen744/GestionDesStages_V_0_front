@@ -22,10 +22,10 @@ pipeline {
                 sh 'npm run build --configuration'
             }
         }
-        stage('SonarQube Analysis') {
+       stage('Run SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh 'npm run sonar'
+                    sh "sonar-scanner -Dsonar.login=${env.admin} -Dsonar.password=${env.othmen199800}"
                 }
             }
         }

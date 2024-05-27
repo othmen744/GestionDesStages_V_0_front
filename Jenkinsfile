@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Build Application') {
             steps {
-                sh 'npm run build --configuration production'
+                sh 'npm run build --configuration'
             }
         }
         stage('SonarQube Analysis') {

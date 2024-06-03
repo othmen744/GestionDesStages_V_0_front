@@ -50,7 +50,7 @@ pipeline {
       stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'k8s-id', serverUrl: 'https://10.0.0.10:6443']) {
-                    sh 'kubectl apply -f k8s/deployment-frontend.yaml'
+                    sh 'kubectl apply -f k8s/deployment-frontend.yaml --validate=false'
                     sh 'kubectl apply -f k8s/frontend-service.yaml'
                 }
             }

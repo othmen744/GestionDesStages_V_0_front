@@ -46,6 +46,13 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
+      stage('Deploy to Kubernetes') {
+            steps {
+                withCredentials([file(credentialsId: k8s, variable: 'KUBECONFIG')]) {
+                    sh 'kubectl apply -f k8s/deployment-frontend.yaml'
+                }
+            }
+        }
     }
     post {
         success {

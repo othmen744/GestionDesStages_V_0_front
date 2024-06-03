@@ -48,12 +48,14 @@ pipeline {
             }
         }
       stage('Deploy to Kubernetes') {
-            steps {
-                withCredentials([file(credentialsId: 'k8s', variable: 'KUBECONFIG')]) {
-                    sh "kubectl apply -f k8s/deployment-frontend.yaml --kubeconfig ${KUBE_CONFIG}"
-                }
-            }
+    steps {
+        script {
+            def kubeconfigPath = "/home/vagrant/.kube/config"  // Update this with the actual path
+            sh "kubectl apply -f k8s/deployment-frontend.yaml --kubeconfig ${kubeconfigPath}"
         }
+    }
+}
+
     }
     post {
         success {

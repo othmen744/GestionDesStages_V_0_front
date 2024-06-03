@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
+        KUBE_CONFIG = '/home/vagrant/.kube/config'
     }
      tools {
         nodejs "NodeJS" // The name you gave to the NodeJS installation
@@ -48,8 +49,8 @@ pipeline {
         }
       stage('Deploy to Kubernetes') {
             steps {
-                withCredentials([file(credentialsId: k8s-credentials, variable: 'KUBECONFIG')]) {
-                    sh 'kubectl apply -f k8s/deployment-frontend.yaml'
+                withCredentials([file(credentialsId: 'k8s-credentials', variable: 'KUBECONFIG')]) {
+                    sh "kubectl apply -f k8s/deployment-frontend.yaml --kubeconfig ${KUBE_CONFIG}"
                 }
             }
         }

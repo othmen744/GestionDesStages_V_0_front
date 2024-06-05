@@ -53,8 +53,15 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'k8s-idd', serverUrl: 'https://10.0.0.10:6443']) {
                     sh "kubectl config use-context ${CONTEXT}"
-                    sh "kubectl get pods"
-                    sh "kubectl apply -f deployment-frontend.yaml"
+                    
+                    // Verify the current context
+                    sh "kubectl config current-context"
+
+                    // Deploy your application using kubectl apply or kubectl create
+                    sh "kubectl apply -f frontend-deployment.yaml"
+
+                    // Check the status of pods after deployment
+                    sh "kubectl get pods --namespace=default"
                 }
             }
         }

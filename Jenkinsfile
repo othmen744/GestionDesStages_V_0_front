@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
-        
+        CONTEXT = 'kubernetes-admin@kubernetes'
+
     }
      tools {
         nodejs "NodeJS" // The name you gave to the NodeJS installation
@@ -50,8 +51,9 @@ pipeline {
       stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'k8s-idd', serverUrl: 'https://10.0.0.10:6443']) {
-                    sh 'kubectl apply -f deployment-frontend.yaml --validate=false'
-                    sh 'kubectl apply -f frontend-service.yaml'
+                    sh "kubectl config use-context ${CONTEXT}"
+                    sh "kubectl get pods"
+                    sh "kubectl apply -f deployment-frontend.yaml"
                 }
             }
         }

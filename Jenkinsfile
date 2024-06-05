@@ -3,6 +3,7 @@ pipeline {
     environment {
         SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
         CONTEXT = 'kubernetes-admin@kubernetes'
+        KUBECONFIG = "$HOME/.kube/config"
 
     }
      tools {

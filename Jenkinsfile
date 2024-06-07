@@ -62,7 +62,7 @@ pipeline {
                     sh 'chmod u+x ./kubectl'  
                     sh './kubectl get nodes'
                     sh './kubectl --kubeconfig=$KUBECONFIG apply -f deployment-frontend.yaml'
-'
+
                 }
             }
         }

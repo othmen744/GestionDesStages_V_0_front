@@ -4,9 +4,8 @@ pipeline {
         SONARQUBE_CREDENTIALS = credentials('jenkins-sonar')
         CONTEXT = 'kubernetes-admin@kubernetes'
         KUBECONFIG = "$HOME/.kube/config"
-
     }
-     tools {
+    tools {
         nodejs "NodeJS" // The name you gave to the NodeJS installation
     }
     stages {
@@ -25,7 +24,7 @@ pipeline {
                 sh 'npm run build --configuration'
             }
         }
-       stage('Run SonarQube Analysis') {
+        stage('Run SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
                     sh "npm run sonar"
@@ -49,9 +48,25 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
-      stage('Deploy to Kubernetes') {
+        stage('Integrate Remote k8s with Jenkins') {
             steps {
-                withKubeConfig([credentialsId: 'k8s-idd', serverUrl: 'https://10.0.0.10:6443']) {
+                withKubeCredentials(kubectlCredentials: [[
+                    caCertificate: '', 
+                    clusterName: 'kubernetes', 
+                    contextName: '', 
+                    credentialsId: 'SECRET_TOKEN', 
+                    namespace: 'default', 
+                    serverUrl: 'https://10.0.0.10:6443'
+                ]]) {
+                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+                    sh 'chmod u+x ./kubectl'  
+                    sh './kubectl get nodes'
+                }
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                withKubeConfig([credentialsId: 'SECRET_TOKEN', serverUrl: 'https://10.0.0.10:6443']) {
                     sh "kubectl config use-context ${CONTEXT}"
                     
                     // Verify the current context
@@ -65,7 +80,6 @@ pipeline {
                 }
             }
         }
-
     }
     post {
         success {

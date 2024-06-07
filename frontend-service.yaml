@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30001  # Specify a valid node port if you want a specific one, otherwise Kubernetes will assign one
   type: NodePort
-  nodePort: 30002

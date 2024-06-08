@@ -48,37 +48,22 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
-        stage('Integrate Remote k8s with Jenkins') {
-            steps {
-                withKubeCredentials(kubectlCredentials: [[
-                    caCertificate: '', 
-                    clusterName: 'kubernetes', 
-                    contextName: '', 
-                    credentialsId: 'SECRET_TOKEN', 
-                    namespace: 'default', 
-                    serverUrl: 'https://10.0.0.10:6443'
-                ]]) {
-                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
-                    sh 'chmod u+x ./kubectl'  
-                    sh './kubectl get nodes'
-                    sh './kubectl --kubeconfig=$KUBECONFIG apply -f deployment-frontend.yaml'
-
-                }
-            }
-        }
         stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'SECRET_TOKEN', serverUrl: 'https://10.0.0.10:6443']) {
-                    sh "kubectl config use-context ${CONTEXT}"
+                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+                    sh 'chmod u+x ./kubectl'
                     
                     // Verify the current context
+                    sh "kubectl config use-context ${CONTEXT}"
                     sh "kubectl config current-context"
 
-                    // Deploy your application using kubectl apply or kubectl create
-                    sh "kubectl apply -f frontend-deployment.yaml"
+                    // Deploy your application using kubectl apply
+                    sh "./kubectl --kubeconfig=$KUBECONFIG apply -f deployment-frontend.yaml"
+                    sh "./kubectl --kubeconfig=$KUBECONFIG apply -f service-frontend.yaml"
 
                     // Check the status of pods after deployment
-                    sh "kubectl get pods --namespace=default"
+                    sh "./kubectl --kubeconfig=$KUBECONFIG get pods --namespace=default"
                 }
             }
         }

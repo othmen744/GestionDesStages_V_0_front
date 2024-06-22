@@ -60,6 +60,7 @@ pipeline {
                     
                     // Deploy your application using kubectl apply
                     sh './kubectl apply -f deployment-frontend.yaml'
+                    sh './kubectl apply -f frontend-service.yaml'
                     
                     // Check the status of pods after deployment
                     sh './kubectl get pods --namespace=default'

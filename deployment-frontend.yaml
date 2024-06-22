@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: oth007/proj-front:karoui
+          image: oth007/proj-front:latest
           ports:
             - containerPort: 80
           env:

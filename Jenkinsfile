@@ -48,25 +48,7 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
-         stage('Deploy to Kubernetes') {
-            steps {
-                withKubeConfig([credentialsId: 'SECRET_TOKEN', serverUrl: 'https://10.0.0.10:6443']) {
-                    // Download kubectl if not already installed
-                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
-                    sh 'chmod u+x ./kubectl'
-                    
-                    // Use the default context specified in your kubeconfig
-                    sh './kubectl config current-context'
-                    
-                    // Deploy your application using kubectl apply
-                    sh './kubectl apply -f deployment-frontend.yaml'
-                    sh './kubectl apply -f frontend-service.yaml'
-                    
-                    // Check the status of pods after deployment
-                    sh './kubectl get pods --namespace=default'
-                }
-            }
-        }
+         
     }
     post {
         success {

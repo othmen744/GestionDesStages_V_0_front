@@ -57,7 +57,7 @@ pipeline {
                     
                     // Use the default context specified in your kubeconfig
                     sh './kubectl config current-context'
-                    
+                    sh './kubectl apply -f nginx-deployment.yaml'
                     // Deploy your application using kubectl apply
                     sh './kubectl apply -f deployment-frontend.yaml'
                     sh './kubectl apply -f frontend-service.yaml'

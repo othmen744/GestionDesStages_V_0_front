@@ -48,6 +48,19 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
+      stage('Tag Docker Image for Local Registry') {
+            steps {
+                script {
+                    sh 'docker tag oth007/proj-front:karoui 192.168.33.10:5000/proj-front:karoui'
+                }
+            }
+        }
+        stage('Push Docker Image to Local Registry') {
+            steps {
+                script {
+                    sh 'docker push 192.168.33.10:5000/proj-front:karoui'
+                }
+            }
       stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'SECRET_TOKEN', serverUrl: 'https://10.0.0.10:6443']) {

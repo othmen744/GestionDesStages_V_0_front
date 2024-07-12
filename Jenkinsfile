@@ -61,6 +61,7 @@ pipeline {
                     sh 'docker push 192.168.33.10:5000/proj-front:karoui'
                 }
             }
+         }
       stage('Deploy to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'SECRET_TOKEN', serverUrl: 'https://10.0.0.10:6443']) {

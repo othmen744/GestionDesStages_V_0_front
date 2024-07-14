@@ -49,6 +49,13 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
+      stage('Login to Docker Registry') {
+            steps {
+                script {
+                    sh 'echo $REGISTRY_CREDENTIALS_PSW | docker login -u $REGISTRY_CREDENTIALS_USR --password-stdin'
+                }
+            }
+        }
       stage('Tag Docker Image for Local Registry') {
             steps {
                 script {

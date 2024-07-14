@@ -4,6 +4,7 @@ pipeline {
         SONARQUBE_CREDENTIALS = credentials('sonarqube')
         CONTEXT = 'kubernetes-admin@kubernetes'
         KUBECONFIG = "$HOME/.kube/config"
+        REGISTRY_CREDENTIALS = credentials('docker-registry')
     }
     tools {
         nodejs "NodeJS" // The name you gave to the NodeJS installation

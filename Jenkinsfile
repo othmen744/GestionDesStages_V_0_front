@@ -55,6 +55,18 @@ pipeline {
                 sh 'docker push oth007/proj-front:karoui'
             }
         }
+       stage('Tag Docker Image') {
+            steps {
+                  sh 'docker tag oth007/gestiondesstages_v_0:karoui localhost:5000/oth007/gestiondesstages_v_0:karoui'
+               }
+    
+        }
+
+        stage('Push Docker-registry Image') {
+            steps {
+                   docker tag oth007/proj-front:karoui localhost:5000/oth007/proj-front:karoui                
+            }
+        }
      
       stage('Deploy to Kubernetes') {
             steps {

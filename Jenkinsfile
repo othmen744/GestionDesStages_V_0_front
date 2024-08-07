@@ -57,7 +57,7 @@ pipeline {
         }
        stage('Tag Docker Image') {
             steps {
-                  sh 'docker tag oth007/proj-front:karouii localhost:5000/oth007/proj-front:karoui'
+                  sh 'docker tag oth007/proj-front:karoui localhost:5000/oth007/proj-front:karoui'
                }
     
         }

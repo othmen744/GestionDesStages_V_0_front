@@ -64,7 +64,7 @@ pipeline {
 
         stage('Push Docker-registry Image') {
             steps {
-                   docker tag oth007/proj-front:karoui localhost:5000/oth007/proj-front:karoui                
+                   sh 'docker tag oth007/proj-front:karoui localhost:5000/oth007/proj-front:karoui'         
             }
         }
      
